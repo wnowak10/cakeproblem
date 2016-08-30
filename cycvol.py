@@ -9,7 +9,7 @@ a=20 # y intercept
 b=5 #negative slope
 def objective(x, sign=1.0): #create objective function. can change sign argument if want to minimize
     yzero=a-b*x[0] #height of first cylinder 
-    yone=a-b*x[1]
+    yone=a-b*x[1] 
     ytwo=a-b*x[2]
     return sign*(yzero*(x[0]**2) + (yone-yzero)*(x[1]**2) + (ytwo-yone))*(x[2]**2) # volume of 3 cylinders
     # leave out pi as constant doesnt affect optimization
@@ -23,7 +23,7 @@ def derivative(x, sign=1.0):
 
 
 
-
+# set up inequality constraints. using scipy, it is always LHS >0. so x[2] means x[2]>0
 def maxconstraint(x): # first x (x[0] cant be bigger than a/b)
     return np.array([(a/b)-x[0]])
 
